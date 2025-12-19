@@ -1,0 +1,97 @@
+# === C++ ===
+*.o
+*.obj
+*.gch
+*.pch
+*.out
+*.exe
+*.a
+*.so
+*.dll
+*.dSYM/
+*.stackdump
+*.vcxproj.*
+*.cmake
+CMakeFiles/
+CMakeCache.txt
+build/
+Makefile
+cmake-build-*/
+
+# === Arduino ===
+*.elf
+*.hex
+*.bin
+*.eep
+*.map
+*.d
+*.dep
+*.srec
+*.lst
+*.pyc
+*.pyo
+*.swp
+*.bak
+*.tmp
+.arduino/
+.pio/
+.pioenvs/
+.vscode/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# === Docker ===
+*.log
+.dockerignore
+docker-compose.override.yml
+docker-compose.local.yml
+.env
+.env.*
+docker.env
+
+
+# Prevent secrets from being committed
+.env.*
+secrets.env
+docker.env
+
+# === PostgreSQL ===
+*.pgsql
+*.sql~
+pgdata/
+postgres-data/
+*.dump
+*.backup
+
+# === Mosquitto ===
+mosquitto/data/
+mosquitto/log/
+mosquitto/config/mosquitto.conf~
+
+# === General ===
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.tmp
+*.orig
+*.rej
+.idea/
+.vscode/
+*.iml
+libs/
