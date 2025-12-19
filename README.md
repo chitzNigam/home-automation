@@ -60,3 +60,7 @@ This is a project to create systems to automate home devices like lights, fans u
 - Oracle Cloud for cloud support
 - Android for Mobile apps
 
+# Adapter Components
+
+![Project Diagram](props/circuit.png)
+
