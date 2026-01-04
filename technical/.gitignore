@@ -65,6 +65,7 @@ docker.env
 # Prevent secrets from being committed
 .env.*
 secrets.env
+secrets.h
 docker.env
 
 # === PostgreSQL ===
