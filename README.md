@@ -64,3 +64,18 @@ This is a project to create systems to automate home devices like lights, fans u
 
 ![Project Diagram](props/circuit.png)
 
+# Server Side Components
+
+### High Level Design
+
+##### MVP1
+![Project Diagram](props/mvp1.png)
+
+##### MVP2
+![Project Diagram](props/mvp2.png)
+
+# References components
+
+- Esp32 >  https://www.amazon.com/ESP-WROOM-32-Development-Aideepen-Compatible-MicroPython/dp/B0BQJ8BTVB/ref=sr_1_6
+
+- Solid state relays > https://roboticsdna.in/product/4-channel-3-24v-relay-module-solid-state-low-level-ssr-dc-control-dc-with-resistive-fuse
