@@ -1,81 +1,131 @@
 # HOME AUTOMATION
 
-## About the project
+## Overview
 
-This is a project to create systems to automate home devices like lights, fans using existing electricity grid and leveraging the network to send signals without the need to install extra cabling. 
+This project implements a system to automate home devices (e.g., lights, fans) using the existing electrical grid and network signals — eliminating the need for additional cabling.
+
+---
+
+## Table of Contents
+
+1. About the Project  
+2. Key Features  
+3. Future Enhancements  
+4. System Architecture  
+5. Hardware Components  
+6. Communication  
+7. Software Stack  
+8. Adapter Components  
+9. Server Architecture  
+10. Reference Components
+
+---
+
+## About the Project
+
+Home automation using networked signals over the existing power grid. Devices can be controlled locally and remotely without rewiring.
+
+---
 
 ## Key Features
 
-- Switch appliances in home with button/touch
-- Cloud support for remote toggle
-- Automation and schedule for toggle
-- Mobile App for easy toggle
-- Remote control for convenient toggle
-- Integration with local sensors to automate switch
+- Switch appliances in the home using a button or touch
+- Cloud support for remote toggling
+- Automation and scheduling for switching
+- Mobile applications for easy control
+- Remote control for convenience
+- Integration with local sensors for automated switching
 
-## Future 
+---
+
+## Future Enhancements
 
 - Switch-less toggle
 - Agent integration
 - Custom home power grid
 - Integration of smart devices
 
-## How this works?
+---
 
-- The primary component in this system will be the home router. This router will act as the data link between the components.
-- The components will be mainly small microcontrollers with wifi capabilities. Eg. Node Mcu, 8266.
+## System Architecture
 
-# Hardware
+### How This Works
 
-## Switches
+- The home **router** acts as the primary data link between components.
+- Devices consist of small **Wi-Fi enabled microcontrollers** (e.g., NodeMCU, ESP8266).
 
-- Solid state relays for reliability and durability.
+---
 
-## Wiring
+## Hardware Components
 
-- Will be directly integrated with home's grid. 
-- Copper/ aluminium wiring for connections in PoC. Integration Circuit Board for MVP
+### Switches
 
-## Controller
+- Solid State Relays selected for reliability and durability.
 
-- Node Mcu, Arduino controller
-- 8266 for wifi communication
+### Wiring
 
-# Communication
+- Direct integration with the home electrical grid.
+- PoC uses copper/aluminium wiring.
+- Integration Circuit Board planned for MVP.
 
-- Over the wireless network with 2.4 GHz connection
-- Public Internet for cloud communication
+### Controller
 
-## Protocols
+- NodeMCU and Arduino controllers
+- 8266 modules for Wi-Fi communication
 
-- TCP for local communication
-- MQTT Event based streaming for cloud communication
+---
 
-# Software
+## Communication
 
-- Arduino IDE for chip programming
+- Wireless network communication over 2.4 GHz
+- Public Internet connection for cloud communication
+
+### Protocols
+
+- **TCP** for local network communication
+- **MQTT** for cloud event streaming
+
+---
+
+## Software Stack
+
+- Arduino IDE for microcontroller programming
 - MQTT Broker
-- Python for CRUD 
-- Postgres for data storage
-- Oracle Cloud for cloud support
-- Android for Mobile apps
+- Python for CRUD operations
+- PostgreSQL for data storage
+- Oracle Cloud for backend support
+- Android for mobile applications
 
-# Adapter Components
+---
 
-![Project Diagram](props/circuit.png)
+## Adapter Components
 
-# Server Side Components
+<p align="center">
+  <img src="props/circuit.png" alt="Adapter Circuit Diagram" width="700" />
+</p>
 
-### High Level Design
+---
 
-##### MVP1
-![Project Diagram](props/mvp1.png)
+## Server Architecture
 
-##### MVP2
-![Project Diagram](props/mvp2.png)
+### High Level Design — MVP1
 
-# References components
+<p align="center">
+  <img src="props/mvp1.png" alt="MVP1 Server Architecture" width="700" />
+</p>
 
-- Esp32 >  https://www.amazon.com/ESP-WROOM-32-Development-Aideepen-Compatible-MicroPython/dp/B0BQJ8BTVB/ref=sr_1_6
+### High Level Design — MVP2
 
-- Solid state relays > https://roboticsdna.in/product/4-channel-3-24v-relay-module-solid-state-low-level-ssr-dc-control-dc-with-resistive-fuse
+<p align="center">
+  <img src="props/mvp2.png" alt="MVP2 Server Architecture" width="700" />
+</p>
+
+---
+
+## Reference Components
+
+- **ESP32 Module**  
+  https://www.amazon.com/ESP-WROOM-32-Development-Aideepen-Compatible-MicroPython/dp/B0BQJ8BTVB/ref=sr_1_6
+
+- **Solid State Relays**  
+  https://roboticsdna.in/product/4-channel-3-24v-relay-module-solid-state-low-level-ssr-dc-control-dc-with-resistive-fuse
