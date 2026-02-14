@@ -67,6 +67,7 @@ docker.env
 secrets.env
 secrets.h
 docker.env
+secrets/
 
 # === PostgreSQL ===
 *.pgsql
@@ -80,6 +81,12 @@ postgres-data/
 mosquitto/data/
 mosquitto/log/
 mosquitto/config/mosquitto.conf~
+server/mosquitto/certs/
+server/mosquitto/passwords/
+server/mosquitto/**/*.key
+server/mosquitto/**/*.crt
+server/mosquitto/**/*.csr
+server/mosquitto/**/*.srl
 
 # === General ===
 *.swp
