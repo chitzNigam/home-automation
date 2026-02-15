@@ -1,5 +1,0 @@
-flask
-paho-mqtt
-psycopg2-binary
-redis
-gunicorn

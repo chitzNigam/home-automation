@@ -30,7 +30,7 @@ data:
     log_type warning
     log_type notice
   acl.conf: |
-    # Orchestrator/admin accounts can manage all tenant namespaces.
+    # API service account can manage all tenant namespaces.
     user api
     topic readwrite tenants/+/devices/+/#
     user orchestrator
@@ -112,30 +112,6 @@ spec:
         runAsUser: 1883
         runAsGroup: 1883
         fsGroup: 1883
-      initContainers:
-        - name: prepare-mosquitto-files
-          image: busybox:1.36
-          command:
-            - sh
-            - -c
-            - |
-              set -eu
-              cp /input-config/mosquitto.conf /mosquitto/config/mosquitto.conf
-              cp /input-config/acl.conf /mosquitto/config/acl.conf
-              cp /input-passwords/passwd /mosquitto/passwords/passwd
-              chown 1883:1883 /mosquitto/config/mosquitto.conf /mosquitto/config/acl.conf /mosquitto/passwords/passwd
-              chmod 0700 /mosquitto/config/acl.conf /mosquitto/passwords/passwd
-          volumeMounts:
-            - name: mosquitto-config-source
-              mountPath: /input-config
-              readOnly: true
-            - name: mosquitto-passwords-source
-              mountPath: /input-passwords
-              readOnly: true
-            - name: mosquitto-config-runtime
-              mountPath: /mosquitto/config
-            - name: mosquitto-passwords-runtime
-              mountPath: /mosquitto/passwords
       containers:
         - name: mosquitto
           image: eclipse-mosquitto:2.0
@@ -146,29 +122,14 @@ spec:
             - containerPort: 8883
               name: mqtts
           volumeMounts:
-            - name: mosquitto-config-runtime
-              mountPath: /mosquitto/config/mosquitto.conf
-              subPath: mosquitto.conf
-              readOnly: true
-            - name: mosquitto-config-runtime
-              mountPath: /mosquitto/config/acl.conf
-              subPath: acl.conf
+            - name: mosquitto-config
+              mountPath: /mosquitto/config
               readOnly: true
             - name: mosquitto-certs
-              mountPath: /mosquitto/certs/ca.crt
-              subPath: ca.crt
+              mountPath: /mosquitto/certs
               readOnly: true
-            - name: mosquitto-certs
-              mountPath: /mosquitto/certs/server.crt
-              subPath: server.crt
-              readOnly: true
-            - name: mosquitto-certs
-              mountPath: /mosquitto/certs/server.key
-              subPath: server.key
-              readOnly: true
-            - name: mosquitto-passwords-runtime
-              mountPath: /mosquitto/passwords/passwd
-              subPath: passwd
+            - name: mosquitto-passwords
+              mountPath: /mosquitto/passwords
               readOnly: true
             - name: mosquitto-data
               mountPath: /mosquitto/data
@@ -202,22 +163,18 @@ spec:
             timeoutSeconds: 3
             failureThreshold: 3
       volumes:
-        - name: mosquitto-config-source
+        - name: mosquitto-config
           configMap:
             name: mosquitto-config
             defaultMode: 0440
-        - name: mosquitto-config-runtime
-          emptyDir: {}
         - name: mosquitto-certs
           secret:
             secretName: mosquitto-certs
             defaultMode: 0440
-        - name: mosquitto-passwords-source
+        - name: mosquitto-passwords
           secret:
             secretName: mosquitto-passwords
             defaultMode: 0440
-        - name: mosquitto-passwords-runtime
-          emptyDir: {}
   volumeClaimTemplates:
     - metadata:
         name: mosquitto-data
